@@ -6,6 +6,7 @@
     "new-password": "Mật khẩu mới",
     "repeat-new-password": "Nhập lại mật khẩu mới",
     "username": "Tên đăng nhập",
+    "nickname": "Nickname",
     "save": "Lưu",
     "close": "Close",
     "cancel": "Hủy",
@@ -136,6 +137,7 @@
     "system": "hệ thống",
     "account-section": {
       "title": "Thông tin tài khoản",
+      "update-information": "Cập nhật thông tin",
       "change-password": "Đổi mật khẩu"
     },
     "preference-section": {

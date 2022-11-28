@@ -45,6 +45,15 @@
       margin-right: 6px;
     }
 
+    li {
+      list-style-type: none;
+
+      &::before {
+        @apply font-bold mr-1;
+        content: "•";
+      }
+    }
+
     pre {
       @apply w-full my-1 p-3 rounded bg-gray-100 whitespace-pre-wrap;
 
@@ -82,7 +91,7 @@
     @apply w-full relative flex flex-row justify-start items-center;
 
     > .btn {
-      @apply flex flex-row justify-start items-center pl-2 pr-1 py-1 my-1 text-xs rounded-lg border bg-gray-100 border-gray-200 opacity-80 shadow hover:opacity-60;
+      @apply flex flex-row justify-start items-center pl-2 pr-1 py-1 my-1 text-xs rounded-lg border bg-gray-100 border-gray-200 opacity-80 shadow hover:opacity-60 cursor-pointer;
 
       &.expand-btn {
         @apply mt-2;

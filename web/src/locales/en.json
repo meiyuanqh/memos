@@ -3,9 +3,10 @@
     "about": "About",
     "email": "Email",
     "password": "Password",
-    "new-password": "New passworld",
+    "new-password": "New password",
     "repeat-new-password": "Repeat the new password",
     "username": "Username",
+    "nickname": "Nickname",
     "save": "Save",
     "close": "Close",
     "cancel": "Cancel",
@@ -137,6 +138,7 @@
     "system": "System",
     "account-section": {
       "title": "Account Information",
+      "update-information": "Update Information",
       "change-password": "Change password"
     },
     "preference-section": {
@@ -158,6 +160,11 @@
       "additional-script": "Additional script",
       "additional-style-placeholder": "Additional CSS codes",
       "additional-script-placeholder": "Additional JavaScript codes"
+    },
+    "apperance-option": {
+      "auto": "Follow system",
+      "light": "Always light",
+      "dark": "Always dark"
     }
   },
   "amount-text": {

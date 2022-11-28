@@ -61,7 +61,7 @@
             @apply w-full flex flex-row justify-around items-center border-b border-gray-100 p-1 mb-1;
 
             > .btn {
-              @apply relative w-6 h-6 p-1 text-gray-600;
+              @apply relative w-6 h-6 p-1 text-gray-600 cursor-pointer select-none;
 
               &:hover > .tip-text {
                 @apply block;
@@ -78,7 +78,7 @@
           }
 
           > .btn {
-            @apply w-full text-sm leading-6 py-1 px-3 rounded justify-start;
+            @apply w-full text-sm leading-6 py-1 px-3 rounded justify-start  cursor-pointer;
 
             &.archive-btn {
               @apply text-orange-600;
@@ -115,32 +115,6 @@
 
       .img {
         @apply max-w-xs;
-      }
-    }
-  }
-
-  > .expand-btn-container {
-    @apply w-full relative flex flex-row justify-start items-center;
-
-    > .btn {
-      @apply flex flex-row justify-start items-center pl-2 pr-1 py-1 my-1 text-xs rounded-lg border bg-gray-100 border-gray-200 opacity-80 shadow hover:opacity-60;
-
-      &.expand-btn {
-        @apply mt-2;
-
-        > .icon-img {
-          @apply rotate-90;
-        }
-      }
-
-      &.fold-btn {
-        > .icon-img {
-          @apply -rotate-90;
-        }
-      }
-
-      > .icon-img {
-        @apply w-4 h-auto ml-1 transition-all;
       }
     }
   }

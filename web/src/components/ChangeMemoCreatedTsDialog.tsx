@@ -69,14 +69,21 @@ const ChangeMemoCreatedTsDialog: React.FC<Props> = (props: Props) => {
         </button>
       </div>
       <div className="dialog-content-container">
-        <label className="form-label input-form-label">
-          <input type="datetime-local" value={createdAt} max={maxDatetimeValue} onChange={handleDatetimeInputChange} />
-        </label>
+        <p className="w-full bg-yellow-100 border border-yellow-400 rounded p-2 text-xs leading-4">
+          THIS IS NOT A NORMAL BEHAVIOR. PLEASE MAKE SURE YOU REALLY NEED IT.
+        </p>
+        <input
+          className="input-text mt-2"
+          type="datetime-local"
+          value={createdAt}
+          max={maxDatetimeValue}
+          onChange={handleDatetimeInputChange}
+        />
         <div className="btns-container">
-          <span className="btn cancel-btn" onClick={handleCloseBtnClick}>
+          <span className="btn-text" onClick={handleCloseBtnClick}>
             {t("common.cancel")}
           </span>
-          <span className="btn confirm-btn" onClick={handleSaveBtnClick}>
+          <span className="btn-primary" onClick={handleSaveBtnClick}>
             {t("common.save")}
           </span>
         </div>

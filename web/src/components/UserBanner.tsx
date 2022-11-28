@@ -28,10 +28,10 @@ const UserBanner = () => {
       if (!owner) {
         return;
       }
-      setUsername(owner.name);
+      setUsername(owner.nickname || owner.username);
       setCreatedDays(Math.ceil((Date.now() - utils.getTimeStampByDate(owner.createdTs)) / 1000 / 3600 / 24));
     } else if (user) {
-      setUsername(user.name);
+      setUsername(user.nickname || user.username);
       setCreatedDays(Math.ceil((Date.now() - utils.getTimeStampByDate(user.createdTs)) / 1000 / 3600 / 24));
     }
   }, [isVisitorMode, user, owner]);
@@ -76,7 +76,7 @@ const UserBanner = () => {
         </div>
         <Dropdown
           trigger={<Icon.MoreHorizontal className="ml-2 w-5 h-auto cursor-pointer" />}
-          actionsClassName="!w-36"
+          actionsClassName="min-w-36"
           actions={
             <>
               {!userService.isVisitorMode() && (

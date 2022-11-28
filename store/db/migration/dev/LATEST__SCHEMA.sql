@@ -18,9 +18,10 @@ CREATE TABLE user (
   created_ts BIGINT NOT NULL DEFAULT (strftime('%s', 'now')),
   updated_ts BIGINT NOT NULL DEFAULT (strftime('%s', 'now')),
   row_status TEXT NOT NULL CHECK (row_status IN ('NORMAL', 'ARCHIVED')) DEFAULT 'NORMAL',
-  email TEXT NOT NULL UNIQUE,
-  role TEXT NOT NULL CHECK (role IN ('HOST', 'USER')) DEFAULT 'USER',
-  name TEXT NOT NULL,
+  username TEXT NOT NULL UNIQUE,
+  role TEXT NOT NULL CHECK (role IN ('HOST', 'ADMIN', 'USER')) DEFAULT 'USER',
+  email TEXT NOT NULL DEFAULT '',
+  nickname TEXT NOT NULL DEFAULT '',
   password_hash TEXT NOT NULL,
   open_id TEXT NOT NULL UNIQUE
 );
@@ -84,16 +85,4 @@ CREATE TABLE memo_resource (
   created_ts BIGINT NOT NULL DEFAULT (strftime('%s', 'now')),
   updated_ts BIGINT NOT NULL DEFAULT (strftime('%s', 'now')),
   UNIQUE(memo_id, resource_id)
-);
-
--- memo_relation
-CREATE TABLE memo_relation (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  created_ts BIGINT NOT NULL DEFAULT (strftime('%s', 'now')),
-  updated_ts BIGINT NOT NULL DEFAULT (strftime('%s', 'now')),
-  memo_id INTEGER NOT NULL,
-  related_memo_id INTEGER NOT NULL,
-  type TEXT NOT NULL,
-  description TEXT NOT NULL DEFAULT '',
-  UNIQUE(memo_id, related_memo_id, type)
 );

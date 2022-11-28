@@ -12,12 +12,14 @@ import MemoContent from "./MemoContent";
 import MemoResources from "./MemoResources";
 import showShareMemoImageDialog from "./ShareMemoImageDialog";
 import showPreviewImageDialog from "./PreviewImageDialog";
+import showChangeMemoCreatedTsDialog from "./ChangeMemoCreatedTsDialog";
 import "../less/memo.less";
 
 dayjs.extend(relativeTime);
 
 interface Props {
   memo: Memo;
+  highlightWord?: string;
 }
 
 export const getFormatedMemoTimeStr = (time: number, locale = "en"): string => {
@@ -29,7 +31,7 @@ export const getFormatedMemoTimeStr = (time: number, locale = "en"): string => {
 };
 
 const Memo: React.FC<Props> = (props: Props) => {
-  const memo = props.memo;
+  const { memo, highlightWord } = props;
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [displayTimeStr, setDisplayTimeStr] = useState<string>(getFormatedMemoTimeStr(memo.displayTs, i18n.language));
@@ -137,22 +139,9 @@ const Memo: React.FC<Props> = (props: Props) => {
         }
       }
     } else if (targetEl.tagName === "IMG") {
-      const currImgUrl = targetEl.getAttribute("src");
-
-      if (currImgUrl) {
-        // use regex to get all image urls from memo content
-        const imageUrls =
-          memo.content.match(/!\[.*?\]\((.*?)\)/g)?.map(
-            (item) =>
-              item
-                .match(/\((.*?)\)/g)
-                ?.slice(-1)[0]
-                .slice(1, -1) ?? ""
-          ) ?? [];
-        showPreviewImageDialog(
-          imageUrls,
-          imageUrls.findIndex((item) => item === currImgUrl)
-        );
+      const imgUrl = targetEl.getAttribute("src");
+      if (imgUrl) {
+        showPreviewImageDialog([imgUrl], 0);
       }
     }
   };
@@ -171,6 +160,10 @@ const Memo: React.FC<Props> = (props: Props) => {
     editorStateService.setEditMemoWithId(memo.id);
   };
 
+  const handleMemoDisplayTimeClick = () => {
+    showChangeMemoCreatedTsDialog(memo.id);
+  };
+
   const handleMemoVisibilityClick = (visibility: Visibility) => {
     const currVisibilityQuery = locationService.getState().query?.visibility;
     if (currVisibilityQuery === visibility) {
@@ -185,7 +178,9 @@ const Memo: React.FC<Props> = (props: Props) => {
       {memo.pinned && <div className="corner-container"></div>}
       <div className="memo-top-wrapper">
         <div className="status-text-container">
-          <span className="time-text">{displayTimeStr}</span>
+          <span className="time-text" onDoubleClick={handleMemoDisplayTimeClick}>
+            {displayTimeStr}
+          </span>
           {memo.visibility !== "PRIVATE" && !isVisitorMode && (
             <span
               className={`status-text ${memo.visibility.toLocaleLowerCase()}`}
@@ -232,6 +227,7 @@ const Memo: React.FC<Props> = (props: Props) => {
       </div>
       <MemoContent
         content={memo.content}
+        highlightWord={highlightWord}
         onMemoContentClick={handleMemoContentClick}
         onMemoContentDoubleClick={handleMemoContentDoubleClick}
       />

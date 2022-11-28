@@ -6,6 +6,7 @@
     "new-password": "新密码",
     "repeat-new-password": "重复新密码",
     "username": "用户名",
+    "nickname": "昵称",
     "save": "保存",
     "close": "关闭",
     "cancel": "退出",
@@ -137,6 +138,7 @@
     "system": "系统",
     "account-section": {
       "title": "账号信息",
+      "update-information": "更新个人信息",
       "change-password": "修改密码"
     },
     "preference-section": {
@@ -158,6 +160,11 @@
       "additional-script": "自定义脚本",
       "additional-style-placeholder": "自定义 CSS 代码",
       "additional-script-placeholder": "自定义 JavaScript 代码"
+    },
+    "apperance-option": {
+      "auto": "跟随系统",
+      "light": "总是浅色",
+      "dark": "总是深色"
     }
   },
   "amount-text": {

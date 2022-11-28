@@ -30,8 +30,8 @@ func (key UserSettingKey) String() string {
 }
 
 var (
-	UserSettingLocaleValue                 = []string{"en", "zh", "vi"}
-	UserSettingMemoVisibilityValue         = []Visibility{Privite, Protected, Public}
+	UserSettingLocaleValue                 = []string{"en", "zh", "vi", "fr"}
+	UserSettingMemoVisibilityValue         = []Visibility{Private, Protected, Public}
 	UserSettingEditorFontStyleValue        = []string{"normal", "mono"}
 	UserSettingMemoDisplayTsOptionKeyValue = []string{"created_ts", "updated_ts"}
 )
@@ -68,7 +68,7 @@ func (upsert UserSettingUpsert) Validate() error {
 			return fmt.Errorf("invalid user setting locale value")
 		}
 	} else if upsert.Key == UserSettingMemoVisibilityKey {
-		memoVisibilityValue := Privite
+		memoVisibilityValue := Private
 		err := json.Unmarshal([]byte(upsert.Value), &memoVisibilityValue)
 		if err != nil {
 			return fmt.Errorf("failed to unmarshal user setting memo visibility value")
